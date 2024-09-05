@@ -34,7 +34,7 @@ namespace RentACar.Domain
 
         public ICollection<Renter> Renters { get; set; } = new List<Renter>();
 
-        public ICollection<Employers> Employers { get; set; } = new List<Employers>();
+        public ICollection<Employee> Employers { get; set; } = new List<Employee>();
 
 
 

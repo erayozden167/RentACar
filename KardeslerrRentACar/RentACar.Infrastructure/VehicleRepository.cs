@@ -19,15 +19,26 @@ namespace RentACar.Infrastructure
         }
         public async Task<Vehicle?> AddVehicleAsync(Vehicle vehicle)
         {
+            using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
+                Garage? garage = await _context.Garages.FindAsync(vehicle.GarageId);
+                if (garage == null)
+                {
+                    return null;
+                }
+                garage.Vehicles.Add(vehicle);
+                vehicle.Garage = garage;
                 await _context.Vehicles.AddAsync(vehicle);
                 await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
                 return vehicle;
             }
             catch (Exception)
             {
-
+                await transaction.RollbackAsync();
                 return null;
             }
         }

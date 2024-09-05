@@ -12,7 +12,7 @@ namespace RentACar.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Employers> Employers { get; set; }
+        public DbSet<Employee> Employers { get; set; }
         public DbSet<Garage> Garages { get; set; }
         public DbSet<Renter> Renters { get; set; }
         public DbSet<Reservations> Reservations { get; set; }

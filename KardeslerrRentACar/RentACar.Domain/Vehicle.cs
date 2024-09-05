@@ -43,11 +43,12 @@ namespace RentACar.Domain
 
         public DateTime DateForRenting { get; set; }
 
-
+        public int GarageId { get; set; }
 
         // Relations
         public ICollection<Reservations> Reservations { get; set; } = new List<Reservations>();
-        
+        public Garage Garage { get; set; } = new Garage();
+
 
 
     }

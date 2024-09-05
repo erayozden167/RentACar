@@ -25,7 +25,6 @@ namespace RentACar.Infrastructure
             {
                 // user ekleme
                 await _context.Users.AddAsync(renter.User);
-                await _context.SaveChangesAsync();
 
                 // renter ekleme
                 await _context.Renters.AddAsync(renter);

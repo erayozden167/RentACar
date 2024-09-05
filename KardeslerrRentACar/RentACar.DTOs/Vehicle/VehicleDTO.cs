@@ -36,5 +36,6 @@ namespace RentACar.DTOs.Vehicle
 
         [Required]
         public double RentalPrice { get; set; }
+        public int GarageId { get; set; }
     }
 }
