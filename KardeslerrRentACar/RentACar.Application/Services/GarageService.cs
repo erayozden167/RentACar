@@ -1,5 +1,7 @@
 ﻿using RentACar.Application.Interfaces;
+using RentACar.Domain;
 using RentACar.DTOs.Garage;
+using RentACar.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +12,85 @@ namespace RentACar.Application.Services
 {
     public class GarageService : IGarageService
     {
-        public async Task<GetGarageDTO> AddGarageAsync(AddGarageDTO garage)
+        private readonly IGarageRepository _garageRepository;
+        public GarageService(IGarageRepository garageRepository)
         {
-            throw new NotImplementedException();
+            _garageRepository = garageRepository;
+        }
+
+        public async Task<GetGarageDTO?> AddGarageAsync(AddGarageDTO addGarage)
+        {
+            Garage garage = new Garage()
+            {
+                GarageName = addGarage.GarageName,
+                Location = addGarage.Location,
+                EstablishDate = addGarage.EstablishDate
+            };
+            Garage? response = await _garageRepository.AddGarageAsync(garage);
+            if (response == null)
+            {
+                return null;
+            }
+            
+            return ConvertToGetGarageDTO(response);
         }
 
         public async Task<bool> DeleteGarageAsync(int id)
         {
-            throw new NotImplementedException();
+            bool response = await _garageRepository.DeleteGarageAsync(id);
+            if (!response)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public async Task<GetGarageDTO> GetGarageAsync(int id)
+        public async Task<GetGarageDTO?> GetGarageAsync(int id)
         {
-            throw new NotImplementedException();
+            Garage? garage = await _garageRepository.GetGarageAsync(id);
+            if (garage == null)
+            {
+                return null;
+            }
+            return ConvertToGetGarageDTO(garage);
         }
 
         public async Task<List<GetGaragesDTO>> GetGaragesAsync()
         {
-            throw new NotImplementedException();
+            List<Garage> garages = await _garageRepository.GetGaragesAsync();
+            return garages.Select(x => new GetGaragesDTO
+            {
+                Id = x.Id,
+                GarageName = x.GarageName,
+                Location = x.Location
+            }).ToList();
         }
 
-        public async Task<GetGarageDTO> UpdateGarageAsync()
+        public async Task<GetGarageDTO?> UpdateGarageAsync(UpdateGarageDTO updateGarage)
         {
-            throw new NotImplementedException();
+            Garage garage = new Garage()
+            {
+                Id = updateGarage.Id,
+                GarageName = updateGarage.Name,
+                Location = updateGarage.Location
+            };
+            Garage? response = await _garageRepository.UpdateGarageAsync(garage);
+            if (response == null)
+            {
+                return null;
+            }
+            return ConvertToGetGarageDTO(response);
+        }
+        private GetGarageDTO ConvertToGetGarageDTO(Garage garage)
+        {
+            return new GetGarageDTO()
+            {
+                Id = garage.Id,
+                GarageName = garage.GarageName,
+                Location = garage.Location,
+                EstablishDate = garage.EstablishDate,
+                BalanceSheet = garage.BalanceSheet
+            };
         }
     }
 }

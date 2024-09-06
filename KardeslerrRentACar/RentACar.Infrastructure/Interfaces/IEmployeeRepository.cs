@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.Infrastructure.Interfaces
 {
-    interface IEmployeeRepository
+    public interface IEmployeeRepository
     {
         Task<List<Employee>> GetAllEmployeesAsync();
 

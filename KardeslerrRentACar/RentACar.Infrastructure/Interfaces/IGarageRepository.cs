@@ -11,8 +11,8 @@ namespace RentACar.Infrastructure.Interfaces
     {
         Task<List<Garage>> GetGaragesAsync();
         Task<Garage?> GetGarageAsync(int id);
-        Task<bool> AddGarageAsync(Garage garage);
-        Task<bool> UpdateGarageAsync(Garage updateGarage);
+        Task<Garage?> AddGarageAsync(Garage garage);
+        Task<Garage?> UpdateGarageAsync(Garage updateGarage);
         Task<bool> DeleteGarageAsync(int id);
     }
 }

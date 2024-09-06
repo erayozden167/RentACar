@@ -22,7 +22,6 @@ namespace RentACar.DTOs.Vehicle
 
         [Required]
         public string Color { get; set; } = string.Empty;
-
         
         public double? Kms { get; set; }
 

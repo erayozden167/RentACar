@@ -17,7 +17,7 @@ namespace RentACar.Infrastructure
         {
             _context = context;
         }
-        public async Task<bool> AddGarageAsync(Garage garage)
+        public async Task<Garage?> AddGarageAsync(Garage garage)
         {
             using var transaction = _context.Database.BeginTransaction();
             try
@@ -25,12 +25,12 @@ namespace RentACar.Infrastructure
                 await _context.AddAsync(garage);
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-                return true;
+                return garage;
             }
             catch
             {
                 await transaction.RollbackAsync();
-                return false;
+                return null;
             }
             
         }
@@ -67,7 +67,7 @@ namespace RentACar.Infrastructure
             return await _context.Garages.ToListAsync();
         }
 
-        public async Task<bool> UpdateGarageAsync(Garage updateGarage)
+        public async Task<Garage?> UpdateGarageAsync(Garage updateGarage)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
@@ -75,18 +75,18 @@ namespace RentACar.Infrastructure
                 Garage? garage = await _context.Garages.FindAsync(updateGarage.Id);
                 if (garage == null)
                 {
-                    return false;
+                    return null;
                 }
                 garage.GarageName = updateGarage.GarageName;
                 garage.Location = updateGarage.Location;
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
-                return true;
+                return garage;
             }
             catch 
             {
                 await transaction.RollbackAsync();
-                return false;
+                return null;
             }
         }
     }

@@ -11,12 +11,25 @@ namespace RentACar.Domain
     public class Employee
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; set; }        
+
+        [Required]        
+        public string GovIdNumber { get; set; } = string.Empty;
+
+        [Required]
+        public string LicenseType { get; set; } = string.Empty;
+
+        [Required]
+        public DateTime DateOfBirth { get; set; }
+
         [Required]
         [Phone]
         public string PhoneNumber { get; set; } = null!;
+
         [Required]
         public string Role { get; set; } = null!;
+
+        public string? Gender { get; set; }
 
         [Required]
         [StringLength(500, MinimumLength = 10)]

@@ -10,9 +10,9 @@ namespace RentACar.Application.Interfaces
     public interface IGarageService
     {
         Task<List<GetGaragesDTO>> GetGaragesAsync();
-        Task<GetGarageDTO> GetGarageAsync(int id);
-        Task<GetGarageDTO> AddGarageAsync(AddGarageDTO garage);
-        Task<GetGarageDTO> UpdateGarageAsync();
+        Task<GetGarageDTO?> GetGarageAsync(int id);
+        Task<GetGarageDTO?> AddGarageAsync(AddGarageDTO garage);
+        Task<GetGarageDTO?> UpdateGarageAsync(UpdateGarageDTO updateGarage);
         Task<bool> DeleteGarageAsync(int id);
     }
 }

@@ -80,6 +80,7 @@ namespace RentACar.Application.Services
         {
             return new GetRenterDTO
             {
+                Id = renter.Id,
                 GovIdNumber = renter.GovIdNumber,
                 LicenseType = renter.LicenseType,
                 DateOfBirth = renter.DateOfBirth,
