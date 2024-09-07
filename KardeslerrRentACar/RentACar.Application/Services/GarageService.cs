@@ -23,7 +23,7 @@ namespace RentACar.Application.Services
             Garage garage = new Garage()
             {
                 GarageName = addGarage.GarageName,
-                Location = addGarage.Location,
+                Address = addGarage.Location,
                 EstablishDate = addGarage.EstablishDate
             };
             Garage? response = await _garageRepository.AddGarageAsync(garage);
@@ -62,7 +62,7 @@ namespace RentACar.Application.Services
             {
                 Id = x.Id,
                 GarageName = x.GarageName,
-                Location = x.Location
+                Location = x.Address
             }).ToList();
         }
 
@@ -72,7 +72,7 @@ namespace RentACar.Application.Services
             {
                 Id = updateGarage.Id,
                 GarageName = updateGarage.Name,
-                Location = updateGarage.Location
+                Address = updateGarage.Location
             };
             Garage? response = await _garageRepository.UpdateGarageAsync(garage);
             if (response == null)
@@ -87,9 +87,9 @@ namespace RentACar.Application.Services
             {
                 Id = garage.Id,
                 GarageName = garage.GarageName,
-                Location = garage.Location,
+                Location = garage.Address,
                 EstablishDate = garage.EstablishDate,
-                BalanceSheet = garage.BalanceSheet
+                BalanceSheet = (decimal)garage.BalanceSheet
             };
         }
     }

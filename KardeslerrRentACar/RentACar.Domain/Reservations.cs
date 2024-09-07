@@ -38,12 +38,12 @@ namespace RentACar.Domain
         public int VehicleId { get; set; }
 
         [Required]
-        public int RentallerId { get; set; }
+        public int RenterId { get; set; }
 
         //Relations
 
-        public ICollection<Renter> Renters { get; set; } = new List<Renter>();
+        public Renter Renter { get; set; } = new Renter();
 
-        public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
+        public Vehicle Vehicle { get; set; } = new Vehicle();
     }
 }

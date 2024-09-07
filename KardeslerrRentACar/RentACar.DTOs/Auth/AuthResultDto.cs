@@ -12,6 +12,8 @@ namespace RentACar.DTOs.Auth
         public string Token { get; set; }
         public string RefreshToken { get; set; }
         public string ErrorMessage { get; set; }
+        public string Mail { get; set; }
+        public DateTime Expiration { get; set; }
     }
 
 }

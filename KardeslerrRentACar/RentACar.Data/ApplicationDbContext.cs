@@ -25,5 +25,9 @@ namespace RentACar.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+        public static void Seed(ApplicationDbContext context)
+        {
+            SeedData.Initialize(context);
+        }
     }
 }

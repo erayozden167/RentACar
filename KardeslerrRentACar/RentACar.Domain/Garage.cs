@@ -17,13 +17,13 @@ namespace RentACar.Domain
         public string GarageName { get; set; } = default!;
 
         [Required]
-        public string Location { get; set; } = default!;
+        public string Address { get; set; } = default!;
 
         [Required]
         public DateTime EstablishDate { get; set; }
 
-        [AllowNull]
-        public decimal BalanceSheet { get; set; }
+        public decimal? BalanceSheet { get; set; } 
+
 
 
 
@@ -31,8 +31,6 @@ namespace RentACar.Domain
         // Relations
 
         public ICollection<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
-
-        public ICollection<Renter> Renters { get; set; } = new List<Renter>();
 
         public ICollection<Employee> Employers { get; set; } = new List<Employee>();
 

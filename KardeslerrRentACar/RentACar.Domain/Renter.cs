@@ -29,7 +29,7 @@ namespace RentACar.Domain
         public int RentCount => Reservations?.Count(x => x.Status == "Valid") ?? 0;
 
         //Fk
-
+        
         public int UserId { get; set; }
 
 

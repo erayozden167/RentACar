@@ -78,7 +78,7 @@ namespace RentACar.Infrastructure
                     return null;
                 }
                 garage.GarageName = updateGarage.GarageName;
-                garage.Location = updateGarage.Location;
+                garage.Address = updateGarage.Address;
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
                 return garage;

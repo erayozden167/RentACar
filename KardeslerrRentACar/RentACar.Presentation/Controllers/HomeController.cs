@@ -19,10 +19,9 @@ namespace RentACar.Presentation.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //List<ListVehicleDTO> listVehicleDto = await _vehicleService.GetVehiclesAsync();
-            //if (listVehicleDto.IsNullOrEmpty()) { return View(NoContent()); }
-            //return View(listVehicleDto);
-            return View();
+            List<ListVehicleDTO> listVehicleDto = await _vehicleService.GetVehiclesAsync();
+            if (listVehicleDto.IsNullOrEmpty()) { return View(NoContent()); }
+            return View(listVehicleDto);
         }
 
         public IActionResult Privacy()

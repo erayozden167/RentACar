@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<RentACar.DTOs.Vehicle.ListVehicleDTO>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -38,19 +40,20 @@
         <!-- Car List on the Right -->
         <div class="col-md-9">
             <div class="row">
-                <!-- Sample Car Item -->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="car-image-url.jpg" class="card-img-top" alt="Car Image">
-                        <div class="card-body">
-                            <h5 class="card-title">Car Model Name</h5>
-                            <p class="card-text">Brief description of the car.</p>
-                            <p class="card-text"><strong>Price:</strong> $25,000</p>
-                            <a href="#" class="btn btn-primary">View Details</a>
+                @foreach (var vehicle in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="car-image-url.jpg" class="card-img-top" alt="Car Image">
+                            <div class="card-body">
+                                <h5 class="card-title">@vehicle.Name</h5>
+                                <p class="card-text">Brief description of the car.</p>
+                                <p class="card-text"><strong>Price:</strong> $@vehicle.RentalPrice</p>
+                                <a href="#" class="btn btn-primary">View Details</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Repeat car item blocks for each car -->
+                }
             </div>
         </div>
     </div>

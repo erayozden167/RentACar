@@ -15,7 +15,7 @@ namespace RentACar.DTOs.Vehicle
         [Required]
         public string Name { get; set; } = string.Empty;
 
-        [RegularExpression("^[0-9]{2}[A-Z]{1,3}[0-9]{2,4}.{8}$", ErrorMessage = "Invalid license plate format.")]       
+        [RegularExpression("^[0-9]{2}[A-Z]{1,2}[0-9]{2,4}$|^[0-9]{2}[A-Z]{3}[0-9]{2,3}$", ErrorMessage = "Invalid license plate format.")]       
 
         [Required]        
         public string LicensePlate { get; set; } = string.Empty;
