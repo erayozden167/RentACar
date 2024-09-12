@@ -1,0 +1,25 @@
+﻿@model RentACar.DTOs.Auth.LoginDTO
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container">
+    <h2>Login</h2>
+    <form asp-action="Login" method="post">
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" required />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <div class="mt-3">
+        <a asp-controller="User" asp-action="Register">Don't have an account? Register here</a>
+    </div>
+</div>

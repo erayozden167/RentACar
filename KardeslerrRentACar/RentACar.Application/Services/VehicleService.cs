@@ -74,7 +74,9 @@ namespace RentACar.Application.Services
                 VehicleType = vehicle.VehicleType,
                 Year = vehicle.Year,
                 Kms = vehicle.Kms,
-                RentalPrice = vehicle.RentalPrice
+                RentalPrice = vehicle.RentalPrice,
+                GarageName = vehicle.Garage.GarageName,
+                GarageId = vehicle.GarageId
             };
             return vehicleDTO;
         }

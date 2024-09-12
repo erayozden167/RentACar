@@ -14,6 +14,6 @@ namespace RentACar.Infrastructure.Interfaces
         Task<bool> AddRenterAsync(Renter renter);
         Task<bool> UpdateRenterAsync(Renter renter);
         Task<bool> DeleteRenterAsync(int id);
-        Task<Renter?> GetRenterByMail(string Email);
+        Task<Renter?> GetRenterByMailAsync(string Email);
     }
 }

@@ -10,7 +10,7 @@ namespace RentACar.Core.Validations
         {
             if (validationContext.ObjectInstance is IReservation reservation)
             {
-                var endDate = (DateTime)value;
+                DateTime endDate = (DateTime)value;
                 var receivalDate = reservation.ReceivalDate;
 
                 if (endDate <= receivalDate.AddYears(1))

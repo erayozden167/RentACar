@@ -81,7 +81,7 @@ namespace RentACar.Infrastructure
             return true;
         }
 
-        public async Task<Renter?> GetRenterByMail(string email)
+        public async Task<Renter?> GetRenterByMailAsync(string email)
         {
             return await _context.Renters.Include(r => r.User).FirstOrDefaultAsync(x => x.User.Email == email);
         }

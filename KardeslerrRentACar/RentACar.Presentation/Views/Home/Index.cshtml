@@ -5,7 +5,6 @@
 }
 
 <div class="container mt-4">
-    <!-- Filter Options at the Top -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
@@ -22,9 +21,7 @@
         </div>
     </div>
 
-    <!-- Main Content with Category Sidebar and Car List -->
     <div class="row">
-        <!-- Category Sidebar on the Left -->
         <div class="col-md-3">
             <h4>Categories</h4>
             <ul class="list-group">
@@ -33,11 +30,9 @@
                 <li class="list-group-item">Sedans</li>
                 <li class="list-group-item">Trucks</li>
                 <li class="list-group-item">Electric</li>
-                <!-- Add more categories as needed -->
             </ul>
         </div>
 
-        <!-- Car List on the Right -->
         <div class="col-md-9">
             <div class="row">
                 @foreach (var vehicle in Model)
@@ -47,9 +42,9 @@
                             <img src="car-image-url.jpg" class="card-img-top" alt="Car Image">
                             <div class="card-body">
                                 <h5 class="card-title">@vehicle.Name</h5>
-                                <p class="card-text">Brief description of the car.</p>
+                                <p class="card-text">@vehicle.Brand - @vehicle.VehicleType</p>
                                 <p class="card-text"><strong>Price:</strong> $@vehicle.RentalPrice</p>
-                                <a href="#" class="btn btn-primary">View Details</a>
+                                <a href="@Url.Action("Details", "Car", new { id = vehicle.Id })" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>

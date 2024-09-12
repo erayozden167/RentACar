@@ -1,0 +1,22 @@
+﻿@model RentACar.DTOs.Vehicle.VehicleDTO
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>@Model.Name</h2>
+            <img src="car-image-url.jpg" class="img-fluid mb-4" alt="Car Image">
+            <p><strong>Brand:</strong> @Model.Brand</p>
+            <p><strong>License Plate:</strong> @Model.LicensePlate</p>
+            <p><strong>Fuel Type:</strong> @Model.FuelType</p>
+            <p><strong>Horsepower:</strong> @Model.Hp HP</p>
+            <p><strong>Year:</strong> @Model.Year</p>
+            <p><strong>Kilometers:</strong> @Model.Kms km</p>
+            <p><strong>Price:</strong> $@Model.RentalPrice/day</p>
+            <p><strong>Color:</strong> @Model.Color</p>
+            <p><strong>Garage Name:</strong> @Model.GarageName</p>
+
+            <!-- Geri Dönüş Butonu -->
+            <button onclick="history.back()" class="btn btn-secondary">Back</button>
+        </div>
+    </div>
+</div>

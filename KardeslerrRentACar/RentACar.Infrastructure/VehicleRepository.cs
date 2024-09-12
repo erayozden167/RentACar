@@ -60,7 +60,7 @@ namespace RentACar.Infrastructure
 
         public async Task<Vehicle?> GetVehicleDetailsAsync(int vehicleId)
         {
-            return await _context.Vehicles.FindAsync(vehicleId);
+            return await _context.Vehicles.Include(x => x.Garage).FirstOrDefaultAsync(x => x.Id == vehicleId);
         }
 
         public async Task<List<Vehicle>?> GetVehiclesAsync()
