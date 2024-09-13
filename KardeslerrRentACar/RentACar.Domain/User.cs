@@ -20,5 +20,7 @@ namespace RentACar.Domain
         public string PasswordHashed { get; set; } = string.Empty;
         [Required]
         public string Role { get; set; } = string.Empty;
+
+        public ICollection<Payment>? Payment { get; set; }
     }
 }

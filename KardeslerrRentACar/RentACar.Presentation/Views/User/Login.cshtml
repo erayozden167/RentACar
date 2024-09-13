@@ -7,6 +7,12 @@
 <div class="container">
     <h2>Login</h2>
     <form asp-action="Login" method="post">
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
         <div class="mb-3">
             <label for="Email" class="form-label">Email address</label>
             <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required />

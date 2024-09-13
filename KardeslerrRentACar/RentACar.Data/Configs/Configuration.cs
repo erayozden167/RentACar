@@ -64,4 +64,14 @@ namespace RentACar.Data.Configs
             .HasColumnType("decimal(18,4)");
         }
     }
+    public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
+    {
+        public void Configure(EntityTypeBuilder<Payment> builder)
+        {
+            builder.HasOne(p => p.User)
+                .WithMany(u => u.Payment)
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+    }
 }
